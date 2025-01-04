@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>WeChat Chat Demo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 聊天区域 -->
+    <div class="chat-container">
+      <div class="status-bar">
+        <div class="status-left">
+          <span>无服务</span>
+          <span class="carrier">中国移动</span>
+          <span class="time" id="barTime">23:25</span>
+        </div>
+        <div class="status-right">
+          <span class="battery-icon">🔋</span>
+          <span class="signal-icon">📶</span>
+        </div>
+      </div>
+      <div class="chat-title-bar">
+        <div class="back-arrow">&lt;</div>
+        <div class="chat-person-name" id="titleName">邱</div>
+        <div class="more-options">•••</div>
+      </div>
+      <div class="chat-screen" id="chatScreen"></div>
+      <div class="bottom-input-bar">
+        <div class="voice-btn">🎤</div>
+        <input type="text" id="chatMessage" placeholder="输入聊天内容..." />
+        <div class="emoji-btn">☺</div>
+        <div class="plus-btn">＋</div>
+      </div>
+    </div>
+
+    <!-- 操作区 -->
+    <div class="side-panel">
+      <h3>操作区</h3>
+
+      <!-- 顶部名称设置 -->
+      <label for="chatNameInput">对话人（顶部名字）</label>
+      <input type="text" id="chatNameInput" placeholder="如：邱" />
+
+      <!-- 左侧内容 -->
+      <div class="left-panel">
+        <h4>左侧设置</h4>
+        <label for="leftAvatarUpload">左侧头像(本地上传)</label>
+        <input type="file" id="leftAvatarUpload" accept="image/*" />
+        <label for="leftMsgInput">左侧聊天内容</label>
+        <input type="text" id="leftMsgInput" placeholder="如：你好" />
+        <button id="addLeftMsgBtn">添加到左侧</button>
+      </div>
+
+      <hr>
+
+      <!-- 右侧内容 -->
+      <div class="right-panel">
+        <h4>右侧设置</h4>
+        <label for="rightAvatarUpload">右侧头像(本地上传)</label>
+        <input type="file" id="rightAvatarUpload" accept="image/*" />
+        <label for="rightMsgInput">右侧聊天内容</label>
+        <input type="text" id="rightMsgInput" placeholder="如：再见" />
+        <button id="addRightMsgBtn">添加到右侧</button>
+      </div>
+
+      <hr>
+
+      <!-- 背景设置 -->
+      <h4>其他设置</h4>
+      <label for="chatBgUpload">对话背景(本地上传)</label>
+      <input type="file" id="chatBgUpload" accept="image/*" />
+      <button id="exportBtn">导出聊天截图</button>
+    </div>
+  </div>
+
+  <!-- 引入脚本 -->
+  <!-- 使用 CDN 引入 html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    // 将后端传递的默认头像路径注入到前端脚本中
+    const DEFAULT_AVATAR = "{{ default_avatar }}";
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
